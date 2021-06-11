@@ -122,7 +122,6 @@ const createBook: Hapi.ServerRoute = {
       data.updatedAt = new Date().toISOString();
 
       books.push(data);
-      console.log(books);
 
       return hToolkit
         .response({

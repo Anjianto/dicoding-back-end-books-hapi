@@ -2,13 +2,13 @@ import Hapi from "@hapi/hapi";
 
 import { books } from "../../data";
 
-export const deleteBook: Hapi.ServerRoute = {
+const deleteBook: Hapi.ServerRoute = {
   method: "DELETE",
   path: "/books/{bookId}",
   handler: (req, hToolkit) => {
     try {
       const bookIndex = books.findIndex(
-        (book) => book.id === req.params.bookId
+        (book) => book.id === req.params.bookId,
       );
 
       if (bookIndex === -1) {
@@ -38,3 +38,5 @@ export const deleteBook: Hapi.ServerRoute = {
     }
   },
 };
+
+export default deleteBook;

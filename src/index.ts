@@ -1,5 +1,5 @@
 import Hapi from "@hapi/hapi";
-import { routes } from "./routes";
+import routes from "./routes";
 
 const server: Hapi.Server = Hapi.server({
   port: 5000,
@@ -19,10 +19,10 @@ async function createServer(): Promise<Hapi.Server> {
   return server;
 }
 
-async function startServer(server: Hapi.Server): Promise<Hapi.Server> {
-  await server.start();
-  server.log(`info`, `Server running on ${server.info.uri}`);
-  return server;
+async function startServer(serv: Hapi.Server): Promise<Hapi.Server> {
+  await serv.start();
+  serv.log(`info`, `Server running on ${serv.info.uri}`);
+  return serv;
 }
 
 createServer()

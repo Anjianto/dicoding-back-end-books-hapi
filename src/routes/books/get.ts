@@ -2,27 +2,30 @@ import Hapi from "@hapi/hapi";
 
 import { books } from "../../data";
 
-export const getBook: Hapi.ServerRoute = {
+const getBook: Hapi.ServerRoute = {
   method: "Get",
   path: "/books/{bookId}",
   handler: (req, hToolkit) => {
     try {
-      const book = books.find((book) => book.id === req.params.bookId);
-      return book
-        ? hToolkit
-            .response({
-              status: "success",
-              data: {
-                book,
-              },
-            })
-            .code(200)
-        : hToolkit
-            .response({
-              status: "fail",
-              message: "Buku tidak ditemukan",
-            })
-            .code(404);
+      const book = books.find((b) => b.id === req.params.bookId);
+
+      if (!book) {
+        return hToolkit
+          .response({
+            status: "fail",
+            message: "Buku tidak ditemukan",
+          })
+          .code(404);
+      }
+
+      return hToolkit
+        .response({
+          status: "success",
+          data: {
+            book,
+          },
+        })
+        .code(200);
     } catch {
       return hToolkit
         .response({
@@ -33,3 +36,5 @@ export const getBook: Hapi.ServerRoute = {
     }
   },
 };
+
+export default getBook;

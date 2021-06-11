@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Anjianto/dicoding-back-end-books-hapi#readme",
   "dependencies": {
     "@hapi/hapi": "^20.1.4",
+    "eslint": "^7.28.0",
     "joi": "^17.4.0",
     "nanoid": "^3.1.23"
   },

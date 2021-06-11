@@ -4,6 +4,11 @@ import { routes } from "./routes";
 const server: Hapi.Server = Hapi.server({
   port: 5000,
   host: "localhost",
+  routes: {
+    cors: {
+      origin: ["*"],
+    },
+  },
 });
 
 async function createServer(): Promise<Hapi.Server> {
